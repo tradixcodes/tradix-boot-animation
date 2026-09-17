@@ -13,7 +13,7 @@ fun pad3(n)
     return "" + n;
 }
 
-frame_count = 101;
+frame_count = 149;
 
 for (i = 1; i <= frame_count; i++)
   animation.images[i] = Image("frame-" + pad3(i) + ".png");

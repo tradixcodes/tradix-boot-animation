@@ -1,0 +1,41 @@
+Window.SetBackgroundTopColor(0, 0, 0);
+Window.SetBackgroundBottomColor(0, 0, 0);
+
+Plymouth.SetRefreshRate(30);  # match the fps you exported frames at
+
+fun pad3(n)
+{
+  if (n < 10)
+    return "00" + n;
+  else if (n < 100)
+    return "0" + n;
+  else
+    return "" + n;
+}
+
+frame_count = 101;
+
+for (i = 1; i <= frame_count; i++)
+  animation.images[i] = Image("frame-" + pad3(i) + ".png");
+
+animation.sprite = Sprite();
+animation.frame = 1;
+
+fun refresh_callback ()
+{
+  animation.image = animation.images[animation.frame];
+  animation.sprite.SetImage(animation.image);
+
+  animation.sprite.SetX(
+    Window.GetX() + Window.GetWidth() / 2 - animation.image.GetWidth() / 2
+  );
+  animation.sprite.SetY(
+    Window.GetY() + Window.GetHeight() / 2 - animation.image.GetHeight() / 2
+  );
+
+  animation.frame++;
+  if (animation.frame > frame_count)
+    animation.frame = 1;
+}
+
+Plymouth.SetRefreshFunction(refresh_callback);

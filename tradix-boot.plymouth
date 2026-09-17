@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Tradix Boot
+Description=Custom Tradix boot animation
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/tradix-boot/frames
+ScriptFile=/usr/share/plymouth/themes/tradix-boot/tradix-boot.script
